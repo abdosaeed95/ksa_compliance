@@ -18,7 +18,7 @@
       "fetch_from": null,
       "fetch_if_empty": 0,
       "fieldname": "ignore_zatca",
-      "fieldtype": "Data",
+      "fieldtype": "Check",
       "hidden": 0,
       "hide_border": 0,
       "hide_days": 0,
