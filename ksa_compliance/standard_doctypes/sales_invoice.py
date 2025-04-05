@@ -109,7 +109,7 @@ def _should_enable_zatca_for_invoice(invoice_id: str) -> bool:
 
 def prevent_cancellation_of_sales_invoice(self: SalesInvoice | POSInvoice, method) -> None:
     is_phase_2_enabled_for_company = ZATCABusinessSettings.is_enabled_for_company(self.company)
-    if is_phase_2_enabled_for_company and frappe.db.get_value('Sales Invoice Additional Fields', {'sales_invoice': doc.name }, 'name'):
+    if is_phase_2_enabled_for_company and frappe.db.get_value('Sales Invoice Additional Fields', {'sales_invoice': self.name }, 'name'):
         frappe.throw(
             msg=_('You cannot cancel sales invoice according to ZATCA Regulations.'),
             title=_('This Action Is Not Allowed'),
