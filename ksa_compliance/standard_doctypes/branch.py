@@ -25,6 +25,7 @@ def validate_mandatory_crn(doc):
 
 
 def validate_duplicate_crn(doc):
+    return
     if doc.custom_branch_ids:
         crn = doc.custom_branch_ids[0].value
         crn_exists = frappe.db.exists(
