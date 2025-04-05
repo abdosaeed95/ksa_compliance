@@ -36,7 +36,7 @@ def clear_additional_fields_ignore_list() -> None:
 
 
 def create_sales_invoice_additional_fields_doctype(self: SalesInvoice | POSInvoice, method):
-    if self.doctype == 'Sales Invoice' and not _should_enable_zatca_for_invoice(self.name):
+    if self.doctype == 'Sales Invoice' and not _should_enable_zatca_for_invoice(self.name) or self.get("ignore_zatca"):
         logger.info(f"Skipping additional fields for {self.name} because it's before start date")
         return
 
