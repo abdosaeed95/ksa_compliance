@@ -119,7 +119,7 @@ def prevent_cancellation_of_sales_invoice(self: SalesInvoice | POSInvoice, metho
 def validate_sales_invoice(self: SalesInvoice | POSInvoice, method) -> None:
     valid = True
     is_phase_2_enabled_for_company = ZATCABusinessSettings.is_enabled_for_company(self.company)
-    if ZATCAPhase1BusinessSettings.is_enabled_for_company(self.company) or is_phase_2_enabled_for_company:
+    if ZATCAPhase1BusinessSettings.is_enabled_for_company(self.company) or is_phase_2_enabled_for_company and not self.ignore_zatca:
         if len(self.taxes) == 0:
             frappe.msgprint(
                 msg=_('Please include tax rate in Sales Taxes and Charges Table'),
